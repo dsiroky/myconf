@@ -1,0 +1,133 @@
+extends c
+
+# We want to overwrite everything in parent ft.
+priority 1
+
+#===================================================================
+
+snippet try
+try
+{
+	${1:body}
+} catch (${2:const std::exception& exc}) {
+	${3:handler}
+}
+endsnippet
+
+snippet cl "class .. (class)"
+class ${1:`!p snip.rv = snip.basename or "name"`}
+{
+public:
+	${1/(\w+).*/$1/}(${2:arguments});
+
+private:
+};
+endsnippet
+
+snippet st "struct { ... };"
+struct ${1:`!p snip.rv = snip.basename or "name"`}
+{
+	${2}
+};
+endsnippet
+
+snippet for "for"
+for ($1) {
+	${2}
+};
+endsnippet
+
+
+snippet ns
+namespace ${1} {
+
+${2}
+
+} // namespace $1
+endsnippet
+
+snippet mo
+std::move(
+endsnippet
+
+snippet cout
+std::cout << ${1} << '\n';
+endsnippet
+
+snippet cerr
+std::cerr << ${1} << '\n';
+endsnippet
+
+snippet str "std::string" i
+std::string
+endsnippet
+
+snippet strv "std::string_view" i
+std::string_view
+endsnippet
+
+snippet deq "std::deque" i
+std::deque<$1>$0
+endsnippet
+
+snippet "vect?o?r?" "std::vector (v)" ir
+std::vector<$1>$0
+endsnippet
+
+snippet "uniq?u?e?" "std::unique_ptr" ir
+std::unique_ptr<$1> $0
+endsnippet
+
+snippet "shr" "std::shared_ptr" ir
+std::shared_ptr<$1> $0
+endsnippet
+
+snippet chr "std::chrono" i
+std::chrono::
+endsnippet
+
+snippet "opt?i?o?" "std::optional" ir
+std::optional<$1> $0
+endsnippet
+
+snippet ya "YAML::Node" i
+YAML::Node
+endsnippet
+
+snippet js "nlohmann::json" i
+nlohmann::json
+endsnippet
+
+snippet se "seastar" i
+seastar::
+endsnippet
+
+snippet ss "seastar string" i
+seastar::sstring
+endsnippet
+
+snippet sf "seastar future" i
+seastar::future<>
+endsnippet
+
+snippet sema "seastar make ready" i
+seastar::make_ready_future()
+endsnippet
+
+snippet "^//=" "double visual delimiter" rb
+//==========================================================================
+endsnippet
+
+snippet "(\s+)//=" "double visual delimiter" rb
+`!p snip.rv = match.group(1)`//================================
+endsnippet
+
+snippet "^//-" "single visual delimiter" rb
+//--------------------------------------------------------------------------
+endsnippet
+
+snippet "(\s+)//-" "single visual delimiter" rb
+`!p snip.rv = match.group(1)`//--------------------------------
+endsnippet
+
+# vim:ft=snippets:

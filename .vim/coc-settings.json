@@ -1,0 +1,22 @@
+{
+    "coc.preferences.rootPatterns": [".vim", ".git", "compile_commands.json"],
+    "languageserver": {
+        "clangd": {
+            "command": "/usr/lib/llvm-21/bin/clangd",
+            "args": ["--background-index", "--completion-style=detailed"],
+            "initializationOptions": {
+                "fallbackFlags": ["-std=c++23", "-Wno-error", "-Wall", "-Wextra", "-Werror", "-Wconversion", "-DNDEBUG"]
+            },
+            "filetypes": ["c", "cpp", "objc", "objcpp", "cuda", "proto"],
+            "rootPatterns": [".vim", ".git", "compile_commands.json"]
+        }
+    },
+    "suggest.autoTrigger": "none",
+    "suggest.noselect": true,
+    "suggest.snippetIndicator": "",
+    "suggest.snippetSupport": false,
+    "diagnostic.checkCurrentLine": true,
+    "diagnostic.messageDelay": 700,
+    "semanticTokens.enable": false,
+    "inlayHint.enable": false
+}

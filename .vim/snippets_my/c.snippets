@@ -1,0 +1,64 @@
+snippet in "#include local header (inc)"
+#include "${1:`!p snip.rv = snip.basename + '.h'`}"
+endsnippet
+
+snippet is "#include <> (Inc)"
+#include <${1}>
+endsnippet
+
+snippet de "#define ..."
+#define ${1}
+endsnippet
+
+snippet fh
+/// ${1}
+///
+/// @file
+
+$0
+endsnippet
+
+snippet ff "include guard"
+#pragma once
+#ifndef ${1:`!p
+if not snip.c:
+	import random, string
+	name = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()
+	rand = ''.join(random.sample(string.ascii_letters+string.digits, 8))
+	snip.rv = ('%s__%s' % (name,rand)).upper()
+else:
+	snip.rv = snip.c`}
+#define $1
+
+${VISUAL}${0}
+
+#endif /* include guard */
+endsnippet
+
+snippet pr
+printf("${1}\n"${2});
+endsnippet
+
+snippet {
+{
+	$1
+}
+endsnippet
+
+snippet "^/[*]=" "double visual delimiter" rb
+/*========================================================================*/
+endsnippet
+
+snippet "^/[*]-" "single visual delimiter" rb
+/*------------------------------------------------------------------------*/
+endsnippet
+
+snippet "^//=" "double visual delimiter" rb
+//==========================================================================
+endsnippet
+
+snippet "^//-" "single visual delimiter" rb
+//--------------------------------------------------------------------------
+endsnippet
+
+# vim:ft=snippets:

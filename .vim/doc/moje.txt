@@ -1,0 +1,348 @@
+*moje*
+
+:enew           novy prazdny buffer
+:e filename     otevrit soubor
+gf              edituje soubor pod kurzorem
+\fo             file open (recursive search)
+
+:w!!              sudo save
+:sav filename     save as filename
+:w filename       save as filename and keep working on the current one
+\wa               save all
+\mk               save all and run make
+
+u       undo
+CTRL-R  redo
+g-      go back in time
+g+      go forward in time
+:GundoShow
+
+CTRL-B  page up (Back)
+CTRL-F  page down (Forward)
+CTRL-U  half page Up
+CTRL-D  half page Down
+
+CTRL-Y  scroll 1 line up
+CTRL-E  scroll 1 line down
+zz      vycentrovat vertikalne kurzor, pozice se nezmeni
+
+`.      skok na presne misto posledni zmeny v souboru
+g;      skok zpet v changelistu
+g,      skok dopredu v changelistu
+`<      skok na zacatek posledniho vizualniho bloku
+`>      skok na konec posledniho vizualniho bloku
+{visual}o   skok na druhy konec visual bloku
+e       skok na konec slova (dopredu)
+w       skok na zacatek dalsiho slova (dopredu)
+b       skok na zacatek slova (dozadu)
+ge      skok na konec slova (dozadu)
+)       jump to next sentence
+}       jump to next paragraph
+0       zacatek radku
+^       zacatek radku (prvni nonblank znak)
+$       konec radku
+)       skok o vetu dopredu
+}       skok o odstavec dal
+%       skok na opacny konec bloku (matching brackets)
+[[ ]] ][ [] jump to { } in the first column
+[{ ]} [( ]) skok na zacatek/konec bloku {} nebo ()
+[#      go to unclosed #if, #ifdef, or #else
+]#      go to unclosed #else or #endif
+gg      skok na zacatek souboru
+G       skok na konec souboru
+{number}% jump to position by percent
+t{char} skok pred nasledujici {char} (na radku)
+T{char} skok za predchozi {char}
+f{char} skok na nasledujici {char}
+F{char} skok na predchozi {char}
+;       repeat last tTfF
+,       repeat last tTfF, reversed direction
+
+m{a-z}    mark position
+m{A-Z}    mark position (works between files)
+`{a-zA-Z} jump to mark (exact spot)
+'{a-zA-Z} jump to line with mark
+:marks    list marks
+
+CTRL-]  skok na tag
+CTRL-T  skok zpet z tagu
+:tj  pokud je nekolik stejnych tagu, tak da nabidku, jinak skoci rovnou
+\gd     goto definition/declaration
+\gD     goto declaration
+gd      goto declaration in current function
+gD      goto global declaration
+
+CTRL-O  skok na predchozi pozici pred skokem (neco jako "undo move")
+CTRL-I  neco jako "redo move"
+
+pro kopirovani/vkladani/vyjmuti kdyz se pred akci da "x, tak se pracuje s registrem x
+"{char} pouzit registr {char} pro kopirovani a vkladani
+""      default register
+"*      registr schranky oznaceni mysi
+"+      registr systemove schranky
+"0      yank register
+"1 "2 .. each delete shifts 1 -> 2 -> 3 ...
+"_      black hole register
+:reg    vypis registru
+{insert,command,search}<C-R>" vlozit yanknuty text
+
+~       zmenit velikost (case) znaku
+r       replace 1 char
+R       replace
+{visual}r   replace selection with 1 char
+{blockvisual}I.....<esc> insert written text on every line (block left side)
+{blockvisual}A.....<esc> append written text on every line (block right side)
+{blockvisual}c.....<esc> replace selected text on every line
+
+.       repeat last change
+
+/       hledat
+?       hledat opacne
+n       opakovat posledni hledani
+N       opakovat ................ v opacnem smeru
+*       hledat dalsi vyskyt identifikatoru pod kurzorem
+#       hledat predchozi vyskyt identifikatoru pod kurzorem
+g*      hledat castecne shody (slovo pod kurzorem muze byt soucasti jinyho)
+g#
+ggn     first match
+GN      last match
+
+:%s/xxx/yyy/   nahradit xxy za yyy v celem souboru
+:s/xxx/yyy/I   case sensitive
+
+operators
+=========
+c{motion}   zmenit
+d{motion}   smazat
+v{motion}   oznacit
+y{motion}   zkopirovat
+>{motion}   indent
+<{motion}   dedent
+={motion}   spravit odsazeni
+gq{motion}  zformatovat do textwidth
+gu{motion}  lowercase
+gU{motion}  uppercase
+gc{motion}  comment/uncomment
+zdvojeny operator ... akce na aktualnim radku (cc, dd, <<, ==, gUU, ...)
+
+{insert}CTRL-T  indent line
+{insert}CTRL-D  dedent line
+
+text objects
+============
+iw      slovo na kurzoru
+aw      slovo na kurzoru plus nejake okoli (zalezi na operatoru)
+ W       SLOVO (od mezery k mezere)
+ s       veta
+ p       odstavec
+ t       tag <x>...</x>
+i{ i( i< i[ i" i' ... vnitrek
+a{ a( a< a[ a" i' ... cely
+
+ia      function argument (without comma)
+aa      function argument (with comma)
+
+other
+=====
+I       pridat text na zacatek radku (pred prvni nonblank znak)
+A       pridat text na konci radku (pred prvni nonblank znak)
+gi      skocit na pozici posledniho mista insert modu a prejit do insert modu
+o       pridat radek pod
+O       pridat radek nad
+C       zmenit do konce radku
+cc      zmenit radek
+c3c     zmenit 3 radky
+s       alias za "cl"
+D       smazat do konce radku
+dd      smazat radek
+d3d     smazat 3 radky
+yy      yanknout radek
+y3y     yanknout 3 radky
+x       delete
+X       backspace
+{insert,command}<C-W>  smazat slovo pred kurzorem
+{insert,command}<C-U>  smazat do zacatku radku
+{insert,command}<C-R>{register}  paste
+{insert,command}<C-R><C-W>       paste word under cursor
+{insert,command}<C-R><C-A>       paste WORD under cursor
+gp      same as p and jump to the pasted end
+gP      same as P and jump to the pasted end
+
+J           spojit radky
+gJ          spojit radky, ale nevkladat mezery
+{visual}J   spojit vyznacene radky
+{visual}gJ
+
+<CTRL-N>    complete word, search forward
+<CTRL-P>    complete word, search backward
+<C-X><C-F>  doplneni nazvu souboru
+
+zo        rozbalit fold
+zc        sbalit fold
+zR        open all folds
+zM        close all folds
+
+qa        start recording macro into reg a
+q         stop recording
+@a        execute macro in reg a
+
+{insert}CTRL-O    docasne prepnuti do normal modu
+gv                znovuoznacit predchozi visual
+gV                znovuoznacit vlozeny text
+
+{insert}CTRL-V    insert next non-digit literally (tab, enter)
+
+repeats
+=======
+4/abc         4th occurence of abc
+5iabc<esc>    insert 5x abc
+3fc           3rd occurence of c
+d3a(          delete 3 levels of ()
+
+windows
+=======
+<C-W>v    vertical split (2 beside)
+<C-W>s    horizontal split (2 above)
+<C-W>c    close window
+<C-W>o    close all other windows
+
+<C-hjkl>  go to window left, down, up, right
+<C-W>w    go to next window
+<C-W>p    switch back
+
+<C-W>HJKL move window to far left, down, up, right
+
+<C-W>+    increase window height
+<C-W>15+  increase window height by 15 rows
+<C-W>-    decrease window height
+<C-W>_    maximize window height
+<C-W>>    increase window width
+<C-W><    decrease window width
+<C-W>|    maximize window width
+<C-W>=    equalize window sizes
+
+buffers
+=======
+]b        next
+[b        previous
+\j        switch
+\bb       fuzzylist
+\bd       delete
+:1,100bd  delete all unmodified buffers
+:BufOnly  delete all except modified and current file
+:ls       list buffers
+:b #      open buffer number #
+
+tabs
+====
+]t          next
+[t          previous
+
+surround
+========
+ysiw"         surround in word with "..."
+ysiw[         surround in word with [ ... ]
+ysiw]         surround in word with [...]
+ysiw>         surround in word with <...>
+ysiw<em>      surround in word with <em>...</em>
+{visual}S"    surround selection with "
+cs'"          change surround from ' to "
+cst"          change surround tag to "
+ds"           delete surround "
+
+Search, replace
+===============
+:s/abc\(def\)/\1/   replace "abcdef" with "def"
+/ab\{1,3}
+
+/abc\C    search case sensitive
+
+C++
+===
+\cp         copy class prototype (e.g. in header file)
+:FindImpl   find possible interface implementations
+
+quickfix/location list
+========
+\qo   open quickfix window
+\qc   close quickfix window
+]q    next
+[q    previous
+:Cfile build.log   open build.log into quickfix window
+\lo   open location list window
+\lc   close location list window
+
+search in files
+===============
+:Gr       search in files
+:Grf      search in current file
+\gr       search current word in files
+
+spell checking
+==============
+\sc       toggle spell checking
+\sl       set spell language
+zg        add as good word
+zG        add temporarily, forget on exit
+zw        add as wrong word
+zW        add temporarily, forget on exit
+zug       undo zg
+zuG
+zuw
+zuW
+]s        next misspelled
+[s        previous misspelled
+
+netrw
+=====
+-         go up one directory
+gh        hide/unhide of dot-files
+
+git/svn
+=======
+:VCSBlame
+:VCSDiff
+:GV         show log
+:GBrowse    open file in browser
+
+vimdiff
+=======
+]c          goto next conflict
+[c          goto previous conflict
+\td         toggle colors
+
+miscelaneous
+============
+<S-TAB>           omni autocomplete
+<C-TAB>           code snippets completion (hit another C-Tab to cycle through placeholders)
+
+:he slash<C-D>    type control-D and get a list all help topics containing
+                    slash (plus use TAB for Help completion)
+\<space>          stop highlighting the current search match
+\sp               remove trailing spaces
+\fs               file switch (to paired file, e.g. .cpp <-> .h)
+:FSLeft           file switch, open companion to the window on the left (right, top, bottom)
+\tr               file browser
+\gp               YCM GetParent
+\tp               YCM GetType
+\ta               taglist
+\nu               toggle line numbers
+\cff              copy current file path with line number, full (file:number)
+\cfp              copy current file path with line number, partial (file:number)
+\nf               neoformat
+<F2>              toggle wrapping
+<F5>              toggle paste mode
+:DiffSaved        show difference against the buffer and the saved file
+:.!program        execute program and paste its output
+:YcmRestartServer restart you complete me server
+:Showultisnips    show available snippets
+:Term             run urxvt
+:Font1            smaller font
+:e ++ff=dos %     reopen current file as a DOS file
+:%!program        run all lines through the program
+:set list         show whitespaces as special characters
+:HiGroup          show current syntax highlighting group
+:Dox              generate Doxygen template for a function
+:TurnSplit        switch between horizontal and vertical splits
+
+vim:ft=help:fdm=marker:

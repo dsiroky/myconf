@@ -1,0 +1,4 @@
+! ntb key '\' next to right shift map to shift as well
+keycode 94 = Shift_L
+
+! vim: set filetype=xmodmap :
