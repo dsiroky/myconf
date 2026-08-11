@@ -1,0 +1,13 @@
+# only 1 TAB press to show completions
+set show-all-if-ambiguous off
+set enable-bracketed-paste on
+
+"\C-a\C-a": alias-expand-line
+
+# ctrl-left, ctrl-right
+"\eOc": forward-word
+"\eOd": backward-word
+
+# for rxvt
+"\e[7~": beginning-of-line
+"\e[8~": end-of-line

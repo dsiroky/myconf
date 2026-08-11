@@ -1,0 +1,4 @@
+clear Lock
+
+! map caps lock to escape, shift+caps to caps lock
+keycode 66 = Escape Caps_Lock Escape

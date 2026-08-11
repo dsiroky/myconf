@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/hasan/.config/neomutt'
+let g:netrw_dirhist_2='/home/hasan/.config/opencode'
+let g:netrw_dirhist_1='/home/hasan/Projects/michal/research'
+let g:netrw_dirhist_0='/home/hasan/Projects/michal'
+let g:netrw_dirhist_9='/home/hasan/Projects/michal/research'
+let g:netrw_dirhist_8='/home/hasan/.config/opencode/skill/nakup'
+let g:netrw_dirhist_7='/home/hasan/.config/neomutt'
+let g:netrw_dirhist_6='/home/hasan/dokumenty/kolo'
+let g:netrw_dirhist_5='/home/hasan/Projects/firemni/lastminute/work/ai'
+let g:netrw_dirhist_4='/home/hasan/Projects/firemni/lastminute/work/pinkerton/repos/memsearch/memsearch'
