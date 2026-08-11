@@ -1,0 +1,13 @@
+text/plain; mousepad '%s'; test=test -n "$DISPLAY"; nametemplate=%s.txt
+text/html; chromium-browser --password-store=gnome-libsecret -new-window '%s' & sleep 15; test=test -n "$DISPLAY"; nametemplate=%s.html
+text/html; w3m -I %{charset} -T text/html; copiousoutput
+text/rtf; libreoffice '%s'; test=test -n "$DISPLAY"
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; libreoffice '%s'; test=test -n "$DISPLAY"
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml; libreoffice '%s'; test=test -n "$DISPLAY"
+application/vnd.ms-excel; libreoffice '%s'; test=test -n "$DISPLAY"
+application/vnd.oasis.opendocument.text; libreoffice '%s'; test=test -n "$DISPLAY"
+application/vnd.oasis.opendocument.spreadsheet; libreoffice '%s'; test=test -n "$DISPLAY"
+application/vnd.oasis.opendocument.presentation; libreoffice '%s'; test=test -n "$DISPLAY"
+application/pdf; evince '%s'; test=test -n "$DISPLAY"
+application/x-pdf; evince '%s'; test=test -n "$DISPLAY"
+video/matroska; mpv '%s'

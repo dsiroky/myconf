@@ -1,0 +1,3 @@
+olets/zsh-abbr
+junegunn/fzf-git.sh path:fzf-git.sh
+zsh-users/zsh-completions

@@ -1,0 +1,24 @@
+extends java
+
+# We want to overwrite everything in parent ft.
+priority 1
+
+#===================================================================
+
+snippet "^//=" "double visual delimiter" rb
+//==========================================================================
+endsnippet
+
+snippet "(\s+)//=" "double visual delimiter" rb
+`!p snip.rv = match.group(1)`//=========================================================
+endsnippet
+
+snippet "^//-" "single visual delimiter" rb
+//--------------------------------------------------------------------------
+endsnippet
+
+snippet "(\s+)//-" "single visual delimiter" rb
+`!p snip.rv = match.group(1)`//---------------------------------------------------------
+endsnippet
+
+# vim:ft=snippets:

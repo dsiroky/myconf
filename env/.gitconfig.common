@@ -1,0 +1,60 @@
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = vim
+[alias]
+    ci = commit
+    sw = "!f(){ git switch $@ && git submodule update --init --recursive --depth=1 ; };f"
+    co = "!f(){ git checkout $@ && git submodule update --init --recursive --depth=1 ; };f"
+    pull = "!f(){ git pull $@ && git submodule update --init --recursive --depth=1 ; };f"
+    st = status
+    fe = fetch --all -p
+    l = log --pretty=format:\"%Cgreen%h%Creset %s%C(auto)%d%Creset %C(cyan)(%an, %ad)%Creset\" --graph --date=short
+    ll = log --pretty=format:\"%Cgreen%h%Creset %s%C(auto)%d%Creset %C(cyan)(%an, %ad)%Creset\" --graph --date=short --all
+	d = difftool -x /mujbin/vimtabbeddiff --dir-diff
+[diff]
+    algorithm = patience
+[diff "image"]
+    command = simple-imagediff
+[diff "odf"]
+    textconv = odt2txt
+[diff "zip"]
+    textconv = unzip -c -a
+[merge]
+    ff = false
+    #tool = mymeld
+    #tool = gvimdiff
+    tool = diffconflicts
+[mergetool]
+    prompt = false
+    trustExitCode = true
+[mergetool "mymeld"]
+    cmd = meld "$LOCAL" "$MERGED" "$REMOTE"
+[mergetool "diffconflicts"]
+    cmd=/mujbin/diffconflicts gvim "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+    keepBackup=false
+    trustExitCode = true
+    prompt=false
+[pull]
+    ff = true
+[gui]
+    fontui = -family \"DejaVu Sans\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+    fontdiff = -family \"DejaVu Sans Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+    tabsize = 4
+[cola]
+    spellcheck = false
+[branch]
+    autosetuprebase = always
+[rerere]
+	enabled = true
+	autoupdate = true
+[gc]
+	auto = 0
+[color "diff"]
+	old = 208
+[color "status"]
+	changed = 208
+	untracked = 208

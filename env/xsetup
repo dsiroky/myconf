@@ -1,0 +1,30 @@
+#!/bin/bash
+
+HNAME=$(hostname)
+
+#===================================================================
+
+#http://askubuntu.com/questions/54157/how-do-i-set-xmodmap-on-login
+sleep 15
+
+xmodmap ~/.Xmodmap
+XMODMAPFILE=~/.Xmodmap.$HNAME
+if [ -f "$XMODMAPFILE" ]; then
+  xmodmap "$XMODMAPFILE"
+fi
+
+if [ "$HNAME" = "mini" ]; then
+  synclient TapButton2=2
+  synclient TapButton3=3
+  synclient CoastingSpeed=0
+fi
+
+xsetwacom set "Wacom Intuos PT M 2 Pad pad" Button 1 4
+xsetwacom set "Wacom Intuos PT M 2 Pad pad" Button 3 5
+xsetwacom set "Wacom Intuos PT M 2 Finger touch" Gesture off
+xsetwacom set "Wacom Intuos PT M 2 Finger touch" TapTime 0
+
+XRESFILE=~/.Xresources.$HNAME
+if [ -f "$XRESFILE" ]; then
+  xrdb -merge "$XRESFILE"
+fi
